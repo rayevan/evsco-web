@@ -1,112 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>rayeev.com</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body {
-background-color: #5529c4;
-color: #ffffff;
-}
-
-.foot {
-position: relative;
-}
-
-.foot p{
-position: fixed;
-bottom: 0;
-width: 100%;
-text-align: center;
-}
-
-.links ul {
-list-style-type: none;
-padding: 0;
-overflow: hidden;
-}
-
-.links {
-width: 100%;
-}
-
-
-.links li a{
-float: left;
-display: block;
-width: 25%;
-text-align: center;
-}
-
-.video {
-height: 100px;
-}
-
-.logo {
-display: block;
-margin-left: auto;
-margin-right: auto;
-width: 140px;
-padding: 40px;
-}
-
-
-@media only screen and (min-width: 600px) {
-.links {
-width: 400px;
-margin: 0 auto;
-}
-
-
-.links li a{
-float: left;
-display: block;
-width: 100px;
-text-align: center;
-transition: 0.3s;
-}
-
-.links li a:hover {
-    background-color: #2e1769;
-	transition: 0.3s;
-}
-
-.video {
-width: 100%;
-height: 500px;
-text-align: center;
-}
-
-iframe {
-max-width:1000px;
-}
-}
-
-
-
-
-</style>
+    <title>rayeev.com</title>
 </head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="style.css">
 <body>
 
-<img src="images/rayeev_2019_min.png" alt="logo" class="logo">
+    <div class="wrapper row text-center">
 
-<div class="video">
-<iframe width="100%" height="500px" src="https://www.youtube.com/embed/KV2sSneBV0o" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
-</div>
+        <div class="media col-6">
+            <iframe width="100%" height="500" src="https://www.youtube.com/embed/ZTrtNTPdf_I?controls=0" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-<div class="links">
-<ul>
-<li> <a href="https://soundcloud.com/rayeev"> <img src="images/icon_soundcloud.png" alt="soundcloud"> </a> </li>
-<li> <a href="https://www.youtube.com/c/rayeev"> <img src="images/icon_youtube.png" alt="youtube"> </a> </li>
-<li> <a href="https://twitter.com/rayeev_"> <img src="images/icon_twitter.png" alt="twitter"> </a> </li>
-<li> <a href="https://www.instagram.com/rayeev_/"> <img src="images/icon_insta.png" alt="insta"> </a> </li>
-</ul>
-</div>
+        <div class="content col-6">
+            <div class="logo row">
+                <img src="images/rayeev_2019_min.png" alt="logo" class="logo">
+            </div>
+            <div class="socials row">
+                <div class="social-link">
+                    <a href="https://soundcloud.com/rayeev"> <img src="images/icon_soundcloud.png" alt="soundcloud"> </a>
+                </div>
+                <div class="social-link">
+                    <a href="https://www.youtube.com/c/rayeev"> <img src="images/icon_youtube.png" alt="youtube"> </a>
+                </div>
+                <div class="social-link">
+                    <a href="https://twitter.com/rayeev_"> <img src="images/icon_twitter.png" alt="twitter"> </a>
+                </div>
+                <div class="social-link">
+                    <a href="https://www.instagram.com/rayeev_/"> <img src="images/icon_insta.png" alt="insta"> </a>
+                </div>
+            </div>
+        </div>
 
+        
+    </div>
 
-<div class="foot"><p>rayeev.com | 2019</p></div>
+    <div class="footer">
+        <p>rayeev.com | 2020</p>
+    </div>
+
 </body>
 </html>
