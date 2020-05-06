@@ -51,10 +51,4 @@ iframe {
 
 .socials img:hover {
     background-color: #653dc9;
-  }
-
-@media screen and (max-width: 300px) {
-    body {
-        transform: scale(1.5, 1.5);
-    }
 }
