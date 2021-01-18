@@ -52,3 +52,90 @@ iframe {
 .socials img:hover {
     background-color: #653dc9;
 }
+
+.greeting {
+    margin-top: 24px;
+    height: 128px;
+    text-align: center;
+}
+
+.headshot img {
+    width: 100%;
+    max-height: 600px;
+    max-width: 450px;
+}
+
+.desc {
+    padding-top: 64px;
+    padding-right: 30px;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.projects {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.proj {
+    padding: 64px;
+}
+
+
+/* cursor animation taken from https://codepen.io/ArtemGordinsky/pen/GnLBq */
+.blinking-cursor {
+    -webkit-animation: 1s blink step-end infinite;
+    -moz-animation: 1s blink step-end infinite;
+    -ms-animation: 1s blink step-end infinite;
+    -o-animation: 1s blink step-end infinite;
+    animation: 1s blink step-end infinite;
+}
+  
+@keyframes "blink" {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: white;
+    }
+}
+
+@-moz-keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: white;
+    }
+}
+
+@-webkit-keyframes "blink" {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: white;
+    }
+}
+
+@-ms-keyframes "blink" {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: white;
+    }
+}
+
+@-o-keyframes "blink" {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: white;
+    }
+}
+/* end cursor animation */
