@@ -40,9 +40,9 @@ iframe {
 }
 
 .socials {
+    width: 200px;
     margin: auto;
     padding-top: 25px;
-    width: 200px;
 }
 
 .socials img {
@@ -76,7 +76,7 @@ a {
 }
 
 .projects {
-    margin-top: 80px;
+    margin-top: 50px;
     text-align: center;
 }
 
