@@ -1,0 +1,77 @@
+/* ------------------------------------------------------------------
+   Saved alternate palettes. This file is NOT linked from the site.
+   To try one, copy its :root block over the palette :root block at
+   the top of style.css (keep the font/radius/max tokens there).
+   Also update <meta name="theme-color"> and the favicon fill in
+   index.html to the palette's --hero-bg.
+   ------------------------------------------------------------------ */
+
+/* Cobalt Mint: cobalt hero with a fresh green accent. */
+:root {
+  --bg: #ffffff;
+  --header-line: #3556e4;
+  --hero-bg: #1a3fe0;
+  --hero-fg: #ffffff;
+  --hero-muted: #c3cdf7;
+  --hero-line: #8195ee;
+  --hero-hover: #3152e3;
+  --portrait-ring: #e4e8fb;
+  --accent: #0ea371;
+  --on-accent: #0c1240;
+  --accent-text: #0d7762;
+  --tint: #eaf7f1;
+  --card: #f5fbf8;
+  --line: #c7eadd;
+  --ink: #0c1240;
+  --ink-soft: #4b5072;
+  --footer-bg: #0b1a7a;
+  --footer-fg: #ffffff;
+  --footer-muted: #c9cde2;
+}
+
+/* Cobalt Lagoon: cobalt hero fading into cyan (gradient). */
+:root {
+  --bg: #ffffff;
+  --header-line: #3556e4;
+  --hero-bg: #1a3fe0;
+  --hero-bg2: #0891b2;
+  --hero-fg: #ffffff;
+  --hero-muted: #c3cdf7;
+  --hero-line: #8195ee;
+  --hero-hover: #3152e3;
+  --portrait-ring: #e4e8fb;
+  --accent: #0891b2;
+  --on-accent: #0c1a3a;
+  --accent-text: #09799a;
+  --tint: #e8f6fa;
+  --card: #f4fbfd;
+  --line: #c4e6ee;
+  --ink: #0c1a3a;
+  --ink-soft: #4b566d;
+  --footer-bg: #0b1a7a;
+  --footer-fg: #ffffff;
+  --footer-muted: #c9cde2;
+}
+
+/* Teal: between green and blue. */
+:root {
+  --bg: #ffffff;
+  --header-line: #2c867f;
+  --hero-bg: #0f766e;
+  --hero-fg: #ffffff;
+  --hero-muted: #c1dbd9;
+  --hero-line: #7bb4af;
+  --hero-hover: #27847d;
+  --portrait-ring: #e2efee;
+  --accent: #0d9488;
+  --on-accent: #0a2826;
+  --accent-text: #0c796f;
+  --tint: #e5f6f4;
+  --card: #f2fbfa;
+  --line: #c2e6e3;
+  --ink: #0a2826;
+  --ink-soft: #4a605e;
+  --footer-bg: #134e4a;
+  --footer-fg: #ffffff;
+  --footer-muted: #cbd8d7;
+}
