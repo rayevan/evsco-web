@@ -11,7 +11,6 @@
   const controls = root.querySelector('.controls');
   const dotsWrap = root.querySelector('.dots');
   const count = root.querySelector('.count');
-  const allBtn = root.querySelector('[data-action="all"]');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   let index = 0;
@@ -20,7 +19,6 @@
   let remaining = SLIDE_MS;
   let hovering = false;
   let keyboardFocus = false;
-  let showAll = false;
 
   const dots = slides.map((_, i) => {
     const b = document.createElement('button');
@@ -54,7 +52,7 @@
   // Starts or pauses the timer. A paused card resumes with the time it had left.
   function sync() {
     // Reduced-motion visitors only get manual controls.
-    const running = !reduceMotion && !hovering && !keyboardFocus && !showAll && !document.hidden;
+    const running = !reduceMotion && !hovering && !keyboardFocus && !document.hidden;
     live.setAttribute('aria-live', running ? 'off' : 'polite');
 
     if (running && timer === null) {
@@ -72,16 +70,6 @@
   root.querySelector('[data-action="prev"]').addEventListener('click', () => show(index - 1));
   root.querySelector('[data-action="next"]').addEventListener('click', () => show(index + 1));
 
-  allBtn.addEventListener('click', () => {
-    showAll = !showAll;
-    root.classList.toggle('is-carousel', !showAll);
-    allBtn.setAttribute('aria-pressed', String(showAll));
-    allBtn.textContent = showAll ? 'Show one at a time' : 'Show all';
-    slides.forEach((s, n) => s.setAttribute('aria-hidden', String(!showAll && n !== index)));
-    if (!showAll) show(index);
-    sync();
-  });
-
   // Pause while the pointer is over the card or a keyboard user is inside it.
   root.addEventListener('mouseenter', () => { hovering = true; sync(); });
   root.addEventListener('mouseleave', () => { hovering = false; sync(); });
@@ -95,21 +83,24 @@
 
   // Arrow keys and swipes.
   root.addEventListener('keydown', (e) => {
-    if (showAll) return;
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return; // leave browser shortcuts alone
     if (e.key === 'ArrowLeft') { show(index - 1); e.preventDefault(); }
     if (e.key === 'ArrowRight') { show(index + 1); e.preventDefault(); }
   });
-  let touchX = null;
-  live.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  let touchStart = null;
+  live.addEventListener('touchstart', (e) => {
+    touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, { passive: true });
   live.addEventListener('touchend', (e) => {
-    if (touchX === null || showAll) return;
-    const dx = e.changedTouches[0].clientX - touchX;
-    if (Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1));
-    touchX = null;
+    if (touchStart === null) return;
+    const dx = e.changedTouches[0].clientX - touchStart.x;
+    const dy = e.changedTouches[0].clientY - touchStart.y;
+    // Mostly-vertical movement is a page scroll, not a swipe.
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) show(index + (dx < 0 ? 1 : -1));
+    touchStart = null;
   });
 
   controls.hidden = false;
-  allBtn.hidden = false;
   root.classList.add('is-carousel');
   show(0);
 })();

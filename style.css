@@ -8,7 +8,7 @@
   --header-line: #22886b;
   --hero-bg: #047857;
   --hero-fg: #ffffff;
-  --hero-muted: #bedcd3;
+  --hero-muted: #e1efeb;
   --hero-line: #75b5a3;
   --hero-hover: #1d8668;
   --portrait-ring: #e1efeb;
@@ -98,6 +98,39 @@ button:focus-visible {
   border-top: 1px solid var(--header-line);
   font-size: 14px;
   color: var(--hero-muted);
+}
+
+.site-footer .container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.falls-link {
+  display: block;
+  flex: none;
+  /* 16x20 icon in an invisible 24x24 tap target. Negative margins keep it from adding space. */
+  padding: 2px 4px;
+  margin: -1px -4px;
+  color: inherit; /* used by the focus ring */
+}
+
+.falls-link img {
+  width: 16px;
+  height: 20px;
+}
+
+.falls-link:focus-visible {
+  outline: none; /* drawn on the image instead, to hug it */
+}
+
+.falls-link:focus-visible img {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.falls-link:hover {
+  opacity: 0.85;
 }
 
 /* ------------------------------------------------------------------
@@ -198,6 +231,11 @@ button:focus-visible {
   color: var(--hero-bg);
 }
 
+/* currentColor is the page green here, so the ring needs its own color. */
+.contact-primary:focus-visible {
+  outline-color: var(--hero-fg);
+}
+
 .contact-primary:hover {
   background: var(--hero-fg);
   opacity: 0.92;
@@ -206,34 +244,14 @@ button:focus-visible {
 /* ------------------------------------------------------------------
    Highlight cards (carousel)
    ------------------------------------------------------------------ */
-.highlights-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 12px;
-}
-
-.highlights-head h2 {
+.highlights h2 {
+  margin-bottom: 14px;
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--hero-muted);
-}
-
-.link-btn {
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--hero-fg);
-  font: inherit;
-  font-size: 14px;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  white-space: nowrap;
-  cursor: pointer;
 }
 
 .card {
@@ -330,13 +348,15 @@ button:focus-visible {
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: var(--line);
-  transition: width 0.2s ease, background 0.2s ease;
+  background: var(--ink-soft);
+  opacity: 0.7; /* keeps inactive dots above 3:1 on the card */
+  transition: width 0.2s ease, background 0.2s ease, opacity 0.2s ease;
 }
 
 .dot[aria-current="true"]::before {
   width: 18px;
   background: var(--accent);
+  opacity: 1;
 }
 
 .buttons {
