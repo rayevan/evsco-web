@@ -1,113 +1,545 @@
+/* ------------------------------------------------------------------
+   Palette: Emerald
+   Alternate palettes (Cobalt Mint, Cobalt Lagoon, Teal) live in
+   palettes.css. To switch, replace this :root block with one of them.
+   ------------------------------------------------------------------ */
+:root {
+  --bg: #ffffff;
+  --header-line: #22886b;
+  --hero-bg: #047857;
+  --hero-fg: #ffffff;
+  --hero-muted: #e1efeb;
+  --hero-line: #75b5a3;
+  --hero-hover: #1d8668;
+  --portrait-ring: #e1efeb;
+  --accent: #059669;
+  --on-accent: #0a2a1f;
+  --accent-text: #067b56;
+  --tint: #e7f7f0;
+  --card: #f3fbf8;
+  --line: #c3e7da;
+  --ink: #0a2a1f;
+  --ink-soft: #4a6159;
+  --footer-bg: #064e3b;
+  --footer-fg: #ffffff;
+  --footer-muted: #c8d8d4;
+
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius: 12px;
+  --max: 1120px;
+}
+
+
+/* ------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
 body {
-    background-color: #797EAD;
-
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--hero-bg);
+  /* Flat unless the palette defines --hero-bg2 (see palettes.css). */
+  background-image: linear-gradient(90deg, var(--hero-bg), var(--hero-bg2, var(--hero-bg)));
+  color: var(--hero-fg);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-.wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    /* This ensures that the wrapper takes the full viewport height */
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.15;
+  text-wrap: balance;
 }
 
-.maincontent {
-    margin: auto;
-    max-width: 800px;
+p {
+  margin: 0;
 }
 
-.content {
-    margin: auto;
-    max-width: 1000px;
-    min-width: 800px;
+img {
+  max-width: 100%;
+  display: block;
 }
 
-.welcome {
-    height: 128px;
-    line-height: 116px;
-    color: #FFF;
-    font-style: normal;
-    font-size: 60px;
-    background: #3C3E50;
-    text-align: center;
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 
-.links a {
-    color: #FFF;
-    text-decoration: none;
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-inline: 24px;
 }
 
-.links a:hover {
-    background-color: #EBEDFF;
-    transition: background 0.1s ease-in-out;
+/* ------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------ */
+.site-footer {
+  padding-block: 24px;
+  border-top: 1px solid var(--header-line);
+  font-size: 14px;
+  color: var(--hero-muted);
 }
 
-.links {
-    color: #FFF;
-    text-align: center;
-    height: 50px;
-    line-height: 54px;
-    font-style: normal;
-    font-size: 24px;
+.site-footer .container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.image img {
-    max-width: 220px;
-    max-height: 312px;
+.falls-link {
+  display: block;
+  flex: none;
+  /* 16x20 icon in an invisible 24x24 tap target. Negative margins keep it from adding space. */
+  padding: 2px 4px;
+  margin: -1px -4px;
+  color: inherit; /* used by the focus ring */
 }
 
-.image {
-    padding-top: 40px;
-    text-align: center;
+.falls-link img {
+  width: 16px;
+  height: 20px;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
+.falls-link:focus-visible {
+  outline: none; /* drawn on the image instead, to hug it */
 }
 
-.title {
-    width: 424px;
-    height: 118px;
-    display: inline-block;
-    background: #3C3E50;
-    color: #FFF;
-    font-size: 50px;
-    line-height: 115px;
-    padding-left: 24px;
+.falls-link:focus-visible img {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 
-.nav a:hover {
-    text-decoration: underline;
+.falls-link:hover {
+  opacity: 0.85;
 }
 
-.nav a {
-    color: #FFF;
-    text-decoration: none;
+/* ------------------------------------------------------------------
+   Intro, by screen width:
+     1000px and up   photo | greeting, contact, cards
+     640 to 999px    photo | greeting, contact; cards underneath
+     521 to 639px    photo | greeting; contact and cards underneath
+     520px and down  everything stacked
+   ------------------------------------------------------------------ */
+.intro {
+  flex: 1;
+  display: grid;
+  /* The photo gives way first: text keeps 588px (plus the 64px gap) until the next layout. */
+  grid-template-columns: min(420px, 100% - 652px) minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
+  padding-block: 80px;
 }
 
-.nav {
-    width: 424px;
-    height: 38px;
-    display: inline-block;
-    background: #56597A;
-    color: #FFF;
-    font-size: 24px;
-    font-style: normal;
-    margin-right: 0px;
-    text-align: center;
-    margin-top: 50px;
+.portrait {
+  width: 100%;
+  height: auto; /* overrides the img height attribute so aspect-ratio applies */
+  aspect-ratio: 4 / 5;
+  border-radius: 28px;
+  object-fit: cover;
+}
+
+.intro-text {
+  min-width: 0;
+}
+
+.intro h1 {
+  font-size: clamp(44px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
 }
 
 .about {
-    height: 600px;
-    background: #373842;
-    color: #FFF;
-    font-size: 22px;
-    font-style: normal;
-    display: flex;
-    padding-left: 16px;
-    padding-right: 32px;
-    margin-top: 32px;
-    align-items: center;
+  font-size: 21px;
+  line-height: 1.55;
+  max-width: 32em;
+  margin-bottom: 32px;
+}
+
+/* ------------------------------------------------------------------
+   Contact buttons
+   ------------------------------------------------------------------ */
+.contact {
+  list-style: none;
+  margin: 0 0 48px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 54px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 1.5px solid var(--hero-line);
+  color: var(--hero-fg);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.contact-btn svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+/* Logo-only buttons (LinkedIn, GitHub): round, same height as the email button. */
+.contact-icon {
+  width: 54px;
+  padding: 0;
+  justify-content: center;
+}
+
+.contact-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.contact-btn:hover {
+  background: var(--hero-hover);
+}
+
+.contact-primary {
+  background: var(--hero-fg);
+  border-color: var(--hero-fg);
+  color: var(--hero-bg);
+}
+
+/* currentColor is the page green here, so the ring needs its own color. */
+.contact-primary:focus-visible {
+  outline-color: var(--hero-fg);
+}
+
+.contact-primary:hover {
+  background: var(--hero-fg);
+  opacity: 0.92;
+}
+
+/* ------------------------------------------------------------------
+   Highlight cards (carousel)
+   ------------------------------------------------------------------ */
+.highlights h2 {
+  margin-bottom: 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hero-muted);
+}
+
+.card {
+  background: var(--bg);
+  color: var(--ink);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
+.card button:focus-visible {
+  outline-color: var(--accent-text);
+}
+
+.slides {
+  display: grid;
+  gap: 24px;
+  padding: 28px 32px 28px;
+}
+
+.is-carousel .slides {
+  padding-bottom: 8px;
+}
+
+.is-carousel .slide {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Only the incoming card fades. Outgoing cards hide at once so text never overlaps. */
+.is-carousel .slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.35s ease;
+}
+
+.highlights:not(.is-carousel) .slide + .slide {
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+.highlights:not(.is-carousel) .controls {
+  display: none;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  margin-bottom: 8px;
+}
+
+.slide h3 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.slide p:last-child {
+  color: var(--ink-soft);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 24px 20px 26px;
+}
+
+.dots {
+  display: flex;
+  gap: 2px;
+}
+
+.dot {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--ink-soft);
+  opacity: 0.7; /* keeps inactive dots above 3:1 on the card */
+  transition: width 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+}
+
+.dot[aria-current="true"]::before {
+  width: 18px;
+  background: var(--accent);
+  opacity: 1;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.count {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-soft);
+  margin-right: 6px;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: var(--tint);
+}
+
+.icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ------------------------------------------------------------------
+   Smaller screens
+   ------------------------------------------------------------------ */
+/* Between phone and desktop: the photo scales and stays beside the greeting. */
+@media (min-width: 520.02px) and (max-width: 999.98px) {
+  .intro {
+    grid-template-columns: calc(28.5% + 29px) minmax(0, 1fr);
+    grid-template-areas:
+      "photo head"
+      "photo contact"
+      "cards cards";
+    gap: 0 clamp(24px, 4.8vw, 48px);
+    align-content: center;
+    padding-block: 48px 56px;
+  }
+
+  /* Lets the greeting, contact and cards be placed on the grid individually. */
+  .intro-text {
+    display: contents;
+  }
+
+  .portrait {
+    grid-area: photo;
+  }
+
+  .intro-head {
+    grid-area: head;
+    align-self: end;
+  }
+
+  .about {
+    margin-bottom: 0;
+    font-size: calc(14px + 0.7vw);
+    text-wrap: pretty; /* no lone word on the last line */
+  }
+
+  .contact {
+    grid-area: contact;
+    align-self: start;
+    margin: 28px 0 0;
+  }
+
+  .highlights {
+    grid-area: cards;
+    min-width: 0;
+    margin-top: 48px;
+  }
+}
+
+/* Too narrow for the contact buttons beside the photo, so they drop underneath. */
+@media (min-width: 520.02px) and (max-width: 639.98px) {
+  .intro {
+    grid-template-areas:
+      "photo head"
+      "contact contact"
+      "cards cards";
+  }
+
+  .intro-head {
+    align-self: center;
+  }
+}
+
+/* Phones */
+@media (max-width: 520px) {
+  .container {
+    padding-inline: 16px;
+  }
+
+  .intro {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+    padding-block: 32px 56px;
+  }
+
+  .portrait {
+    max-width: 340px;
+    justify-self: center;
+  }
+
+  .about {
+    font-size: 19px;
+  }
+
+  .contact {
+    margin-bottom: 40px;
+  }
+
+  /* Email stretches to fill the row beside the two logos; wraps to its own row if too narrow. */
+  .contact li:first-child {
+    flex: 1 1 200px;
+  }
+
+  .contact-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .slides {
+    padding: 24px 20px;
+  }
+
+  .controls {
+    padding: 8px 14px 16px 16px;
+  }
+
+  .count {
+    display: none;
+  }
+}
+
+/* Small phones: tighter buttons so all three share a row down to 320px. */
+@media (max-width: 374px) {
+  .contact {
+    gap: 8px;
+  }
+
+  .contact li:first-child {
+    flex-basis: auto;
+  }
+
+  .contact-btn {
+    height: 48px;
+  }
+
+  .contact-icon {
+    width: 48px;
+  }
+
+  .contact-primary {
+    gap: 8px;
+    padding-inline: 12px;
+    font-size: 15px;
+  }
+
+  .contact-primary svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-carousel .slide.is-active,
+  .dot::before,
+  .contact-btn {
+    transition: none;
+  }
 }
