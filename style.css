@@ -1,28 +1,30 @@
 /* ------------------------------------------------------------------
-   Palette: Emerald
-   Alternate palettes (Cobalt Mint, Cobalt Lagoon, Teal) live in
+   Palette: Cobalt Lagoon (cobalt fading into cyan)
+   Alternate palettes (Emerald, Cobalt Mint, Teal) live in
    palettes.css. To switch, replace this :root block with one of them.
    ------------------------------------------------------------------ */
 :root {
   --bg: #ffffff;
-  --header-line: #22886b;
-  --hero-bg: #047857;
+  /* Lines and hover are translucent white so they match the gradient wherever they sit. */
+  --header-line: rgba(255, 255, 255, 0.16);
+  --hero-bg: #1a3fe0;
+  --hero-bg2: #0c7ab6; /* between the original #0891b2 and the softer #0e6bb8; white text stays at 4.7:1+ */
   --hero-fg: #ffffff;
-  --hero-muted: #e1efeb;
-  --hero-line: #75b5a3;
-  --hero-hover: #1d8668;
-  --portrait-ring: #e1efeb;
-  --accent: #059669;
-  --on-accent: #0a2a1f;
-  --accent-text: #067b56;
-  --tint: #e7f7f0;
-  --card: #f3fbf8;
-  --line: #c3e7da;
-  --ink: #0a2a1f;
-  --ink-soft: #4a6159;
-  --footer-bg: #064e3b;
+  --hero-muted: #e6ebfc; /* 6.2:1 on cobalt; 4.5:1+ everywhere the section label and footer text sit */
+  --hero-line: rgba(255, 255, 255, 0.6);
+  --hero-hover: rgba(255, 255, 255, 0.14);
+  --portrait-ring: #e4e8fb;
+  --accent: #0891b2;
+  --on-accent: #0c1a3a;
+  --accent-text: #09799a;
+  --tint: #e8f6fa;
+  --card: #f4fbfd;
+  --line: #c4e6ee;
+  --ink: #0c1a3a;
+  --ink-soft: #4b566d;
+  --footer-bg: #0b1a7a;
   --footer-fg: #ffffff;
-  --footer-muted: #c8d8d4;
+  --footer-muted: #c9cde2;
 
   --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
