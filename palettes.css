@@ -6,6 +6,29 @@
    index.html to the palette's --hero-bg.
    ------------------------------------------------------------------ */
 
+/* Emerald: deep vivid green. Live from 2026-11-11 to 2026-11-22. */
+:root {
+  --bg: #ffffff;
+  --header-line: #22886b;
+  --hero-bg: #047857;
+  --hero-fg: #ffffff;
+  --hero-muted: #e1efeb;
+  --hero-line: #75b5a3;
+  --hero-hover: #1d8668;
+  --portrait-ring: #e1efeb;
+  --accent: #059669;
+  --on-accent: #0a2a1f;
+  --accent-text: #067b56;
+  --tint: #e7f7f0;
+  --card: #f3fbf8;
+  --line: #c3e7da;
+  --ink: #0a2a1f;
+  --ink-soft: #4a6159;
+  --footer-bg: #064e3b;
+  --footer-fg: #ffffff;
+  --footer-muted: #c8d8d4;
+}
+
 /* Cobalt Mint: cobalt hero with a fresh green accent. */
 :root {
   --bg: #ffffff;
@@ -24,30 +47,6 @@
   --line: #c7eadd;
   --ink: #0c1240;
   --ink-soft: #4b5072;
-  --footer-bg: #0b1a7a;
-  --footer-fg: #ffffff;
-  --footer-muted: #c9cde2;
-}
-
-/* Cobalt Lagoon: cobalt hero fading into cyan (gradient). */
-:root {
-  --bg: #ffffff;
-  --header-line: #3556e4;
-  --hero-bg: #1a3fe0;
-  --hero-bg2: #0891b2;
-  --hero-fg: #ffffff;
-  --hero-muted: #c3cdf7;
-  --hero-line: #8195ee;
-  --hero-hover: #3152e3;
-  --portrait-ring: #e4e8fb;
-  --accent: #0891b2;
-  --on-accent: #0c1a3a;
-  --accent-text: #09799a;
-  --tint: #e8f6fa;
-  --card: #f4fbfd;
-  --line: #c4e6ee;
-  --ink: #0c1a3a;
-  --ink-soft: #4b566d;
   --footer-bg: #0b1a7a;
   --footer-fg: #ffffff;
   --footer-muted: #c9cde2;
